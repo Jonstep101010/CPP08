@@ -10,11 +10,12 @@ class NotFoundException : public std::exception {
 };
 
 template <typename T> void easyfind(T container, int to_find) {
-	typename T::iterator iter = std::find(
-		container.begin(), container.end(), to_find);
+	typename T::iterator iter
+		= std::find(container.begin(), container.end(), to_find);
 
 	if (iter == container.end()) {
 		throw NotFoundException();
 	}
-	std::cout << "target found in container\n";
+	std::cout << "target found in container: " << to_find
+			  << "\n";
 }

@@ -39,8 +39,34 @@ void Span::addNumber(int x) {
 		throw MaxElemException();
 	_data.push_back(x);
 }
-unsigned int Span::shortestSpan() { return 1; }
-unsigned int Span::longestSpan() { return 2; }
+unsigned int Span::shortestSpan() {
+	if (_data.size() < 2)
+		throw SpanNotFoundException();
+	return -1;
+}
+
+unsigned int Span::longestSpan() {
+	if (_data.size() < 2)
+		throw SpanNotFoundException();
+	bool init = false;
+	int  min;
+	int  max;
+
+	for (std::vector<int>::iterator iter = _data.begin(); iter != _data.end(); iter++) {
+		if (!init) {
+			min  = *iter;
+			max  = *iter;
+			init = true;
+		}
+		if (*iter < min)
+			min = *iter;
+		if (*iter > max)
+			max = *iter;
+	}
+	return max - min;
+}
+
+// @follow-up range of iterators
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

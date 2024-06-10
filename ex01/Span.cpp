@@ -42,6 +42,21 @@ void Span::addNumber(int x) {
 unsigned int Span::shortestSpan() {
 	if (_data.size() < 2)
 		throw SpanNotFoundException();
+	bool init       = false;
+	bool smallerset = false;
+	bool biggerset  = false;
+	int  smaller, bigger, span;
+	for (std::vector<int>::iterator iter = _data.begin(); iter != _data.end(); iter++) {
+		if (!init) {
+			// iterate over to find smallest
+			// iterate over to find second smallest (next bigger)
+			// set span, init
+			span = bigger - smaller;
+		} else {
+			// iterate, always finding next bigger, updating span if current is smallest
+		}
+	}
+
 	return -1;
 }
 
@@ -49,8 +64,7 @@ unsigned int Span::longestSpan() {
 	if (_data.size() < 2)
 		throw SpanNotFoundException();
 	bool init = false;
-	int  min;
-	int  max;
+	int  min, max;
 
 	for (std::vector<int>::iterator iter = _data.begin(); iter != _data.end(); iter++) {
 		if (!init) {

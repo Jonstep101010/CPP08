@@ -1,4 +1,5 @@
 #include "Span.hpp"
+#include <algorithm>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -25,7 +26,8 @@ Span::~Span() {}
 
 Span& Span::operator=(Span const& rhs) {
 	if (this != &rhs) {
-		(void)rhs;
+		_data = rhs._data;
+		_elem = rhs._elem;
 	}
 	return *this;
 }
@@ -39,45 +41,26 @@ void Span::addNumber(int x) {
 		throw MaxElemException();
 	_data.push_back(x);
 }
+
 unsigned int Span::shortestSpan() {
 	if (_data.size() < 2)
 		throw SpanNotFoundException();
-	bool init       = false;
-	bool smallerset = false;
-	bool biggerset  = false;
-	int  smaller, bigger, span;
-	for (std::vector<int>::iterator iter = _data.begin(); iter != _data.end(); iter++) {
-		if (!init) {
-			// iterate over to find smallest
-			// iterate over to find second smallest (next bigger)
-			// set span, init
-			span = bigger - smaller;
-		} else {
-			// iterate, always finding next bigger, updating span if current is smallest
-		}
+	std::sort(_data.begin(), _data.end());
+	int span = _data[1] - _data[0];
+	for (std::vector<int>::iterator iter = _data.begin();
+		 iter != _data.end() && iter + 1 != _data.end(); iter++) {
+		if (*(iter + 1) - *iter < span || span == 0)
+			span = *(iter + 1) - *iter;
 	}
-
-	return -1;
+	return span;
 }
 
 unsigned int Span::longestSpan() {
 	if (_data.size() < 2)
 		throw SpanNotFoundException();
-	bool init = false;
-	int  min, max;
 
-	for (std::vector<int>::iterator iter = _data.begin(); iter != _data.end(); iter++) {
-		if (!init) {
-			min  = *iter;
-			max  = *iter;
-			init = true;
-		}
-		if (*iter < min)
-			min = *iter;
-		if (*iter > max)
-			max = *iter;
-	}
-	return max - min;
+	std::sort(_data.begin(), _data.end());
+	return _data.back() - _data.front();
 }
 
 // @follow-up range of iterators

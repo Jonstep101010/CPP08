@@ -37,14 +37,16 @@ Span& Span::operator=(Span const& rhs) {
 */
 
 void Span::addNumber(int x) {
-	if (_elem == _data.size())
+	if (_elem == _data.size()) {
 		throw MaxElemException();
+	}
 	_data.push_back(x);
 }
 
 unsigned int Span::shortestSpan() {
-	if (_data.size() < 2)
+	if (_data.size() < 2) {
 		throw SpanNotFoundException();
+	}
 	std::sort(_data.begin(), _data.end());
 	int span = _data[1] - _data[0];
 	for (std::vector<int>::iterator iter = _data.begin();
@@ -57,8 +59,9 @@ unsigned int Span::shortestSpan() {
 }
 
 unsigned int Span::longestSpan() {
-	if (_data.size() < 2)
+	if (_data.size() < 2) {
 		throw SpanNotFoundException();
+	}
 
 	std::sort(_data.begin(), _data.end());
 	return _data.back() - _data.front();

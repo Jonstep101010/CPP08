@@ -21,9 +21,3 @@ int main() {
 	std::cout << sp.longestSpan() << std::endl;
 	return 0;
 }
-
-/*
-> ./Span
-2
-14
-*/

@@ -1,13 +1,20 @@
 #include "Span.hpp"
+#include <algorithm>
+#include <iostream>
 
 int main() {
-	Span sp = Span(5);
+	std::vector<int> v;
 
-	sp.addNumber(6);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
+	for (int i = 0; i < 10000; i++) {
+		v.push_back(i);
+	}
+
+	v.push_back(6);
+	std::random_shuffle(v.begin(), v.end());
+	Span sp = Span(10001);
+
+	sp.addRange(v.begin(), v.end());
+
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	return 0;

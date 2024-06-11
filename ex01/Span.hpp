@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-#include <string>
 #include <vector>
 
 class Span {
@@ -16,20 +14,16 @@ public:
 	void         addNumber(int x);
 	unsigned int shortestSpan();
 	unsigned int longestSpan();
+	// range iterator
+	void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 	Span& operator=(Span const& rhs);
 
-	// @follow-up range of iterators
-
 	class MaxElemException : public std::exception {
-		const char* what() const throw() {
-			return "maximum capacity exceeded";
-		}
+		const char* what() const throw() { return "maximum capacity exceeded"; }
 	};
 	class SpanNotFoundException : public std::exception {
-		const char* what() const throw() {
-			return "span cannot be found";
-		}
+		const char* what() const throw() { return "span cannot be found"; }
 	};
 
 private:

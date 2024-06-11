@@ -63,7 +63,15 @@ unsigned int Span::longestSpan() {
 	return _data.back() - _data.front();
 }
 
-// @follow-up range of iterators
+/**
+ * @brief add a range of numbers to the data
+ */
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+	while (begin != end) {
+		this->Span::addNumber(*begin);
+		begin++;
+	}
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

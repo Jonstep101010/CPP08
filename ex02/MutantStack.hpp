@@ -30,5 +30,5 @@ public:
 	~MutantStack() {}
 
 	iterator begin() { return std::stack<T, Container>::c.begin(); }
-	iterator end() { return std::stack<T, Container>::c.begin(); }
+	iterator end() { return std::stack<T, Container>::c.end(); }
 };

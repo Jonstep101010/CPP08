@@ -49,8 +49,9 @@ unsigned int Span::shortestSpan() {
 	int span = _data[1] - _data[0];
 	for (std::vector<int>::iterator iter = _data.begin();
 		 iter != _data.end() && iter + 1 != _data.end(); iter++) {
-		if (*(iter + 1) - *iter < span || span == 0)
+		if ((*(iter + 1) - *iter < span || span == 0) && *iter != 0) {
 			span = *(iter + 1) - *iter;
+		}
 	}
 	return span;
 }

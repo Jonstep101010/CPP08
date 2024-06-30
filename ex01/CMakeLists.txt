@@ -7,7 +7,7 @@ project(Span)
 set(CMAKE_CXX_STANDARD 98)
 
 # Set the C++ compiler
-set(CMAKE_CXX_COMPILER /opt/homebrew/opt/llvm/bin/clang++)
+set(CMAKE_CXX_COMPILER /usr/bin/clang++-17)
 
 # Add the executable target
 file(GLOB sources main.cpp *.cpp *.hpp)

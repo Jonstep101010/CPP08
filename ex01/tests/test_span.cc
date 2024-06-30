@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <random>
+#include <algorithm> // Add this line
 
 #include "Span.hpp"
 
